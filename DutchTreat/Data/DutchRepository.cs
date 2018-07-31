@@ -33,7 +33,15 @@ namespace DutchTreat.Data
         }
         public IEnumerable<Product> GetProductsByCategory(string category)
         {
-            return _context.Products.Where(x=>x.Category== category).OrderBy(x => x.Title).ToList();
+            try
+            {
+                return _context.Products.Where(x => x.Category == category).OrderBy(x => x.Title).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation("Exception occurred", ex);
+                return null;
+            }
         }
 
         public bool SaveAll()
