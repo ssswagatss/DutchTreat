@@ -30,6 +30,7 @@ namespace DutchTreat
                 cfg.UseSqlServer(_configuration.GetConnectionString("DutchConnectionString"));
             });
             services.AddTransient<IMailServices, NullMailServices>();
+            services.AddTransient<DutchSeeder>();
             //Add real Service later
             services.AddMvc();
         }
@@ -48,6 +49,17 @@ namespace DutchTreat
                 .UseMvc(cfg=> {
                     cfg.MapRoute("Default", "{controller}/{action}/{id?}", new { controller = "App", action = "Index" });
                 });
+
+
+            if (env.IsDevelopment())
+            {
+                //Seed the database
+                using (var scope=app.ApplicationServices.CreateScope())
+                {
+                    var seeder = scope.ServiceProvider.GetService<DutchSeeder>();
+                    seeder.Seed();
+                }
+            }
         }
     }
 }
