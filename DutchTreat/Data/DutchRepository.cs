@@ -1,4 +1,5 @@
 ﻿using DutchTreat.Data.Entities;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,25 @@ namespace DutchTreat.Data
     public class DutchRepository : IDutchRepository
     {
         private readonly DutchContext _context;
+        private readonly ILogger<DutchRepository> _logger;
 
-        public DutchRepository(DutchContext context)
+        public DutchRepository(DutchContext context, ILogger<DutchRepository> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         public IEnumerable<Product> GetProducts()
         {
-            return _context.Products.OrderBy(x => x.Title).ToList();
+            try
+            {
+                return _context.Products.OrderBy(x => x.Title).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogInformation("Exception occurred", ex);
+                return null;
+            }
         }
         public IEnumerable<Product> GetProductsByCategory(string category)
         {

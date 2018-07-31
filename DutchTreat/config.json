@@ -4,5 +4,11 @@
   },
   "ConnectionStrings": {
     "DutchConnectionString": "Server=(localdb)\\mssqllocaldb;Database=DutchDB;Trusted_Connection=True;MultipleActiveResultSets=True;"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning"
+    }
   }
 }
