@@ -1,0 +1,24 @@
+﻿
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+ul.product-props {
+    font-size: small;
+}
+
+    ul.product-props li {
+        list-style-type: none;
+    }
+
+menu li {
+    display: inline;
+}
+
+    menu li ::after {
+        content: '  |';
+    }
+
+    menu li:last-of-type::after {
+        content: "";
+    }

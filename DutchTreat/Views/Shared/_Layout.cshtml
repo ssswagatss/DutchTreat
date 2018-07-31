@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Dutch Treat :Hello</title>
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <header>Welcome to DutchTreat</header>
+    <menu>
+        <ul>
+            <li><a asp-controller="app" asp-action="index">Home</a></li>
+            <li><a asp-controller="app" asp-action="contact">Contact</a></li>
+            <li><a asp-controller="app" asp-action="about">About</a></li>
+        </ul>
+    </menu>
+    <section>
+       @RenderBody()
+
+    </section>
+    <footer>
+        Designed with love by Swagat
+    </footer>    
+</body>
+</html>
