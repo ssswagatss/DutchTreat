@@ -1,3 +1,32 @@
-﻿
-<h2>Contat</h2>
+﻿@model ContactViewModel
+<h2>@ViewBag.Title</h2>
 
+<div asp-validation-summary="ModelOnly"></div>
+<form method="post">
+    <label asp-for="Name">Your Name :</label><br />
+    <input type="text" asp-for="Name"/>
+    <span asp-validation-for="Name"></span>
+    <br />
+
+    <label asp-for="Email">Email :</label><br />
+    <input type="email" asp-for="Email"/>
+    <span asp-validation-for="Name"></span>
+    <br />
+
+    <label asp-for="Subject">Subject :</label><br />
+    <input type="text" asp-for="Subject"/>
+    <span asp-validation-for="Name"></span>
+    <br />
+
+
+    <label asp-for="Message">Message :</label><br />
+    <textarea rows="5" asp-for="Message"></textarea>
+    <span asp-validation-for="Name"></span>
+    <br />
+
+    <input type="submit"  value="Submit" />
+</form>
+
+<div>
+    @ViewBag.UserMessage
+</div>
