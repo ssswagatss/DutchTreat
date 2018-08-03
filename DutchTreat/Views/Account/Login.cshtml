@@ -1,0 +1,24 @@
+﻿@model LoginViewModel
+<h2>@ViewBag.Title</h2>
+
+<div asp-validation-summary="ModelOnly"  class="text-danger"></div>
+<form method="post">
+    <label asp-for="UserName">Your UserName :</label><br />
+    <input type="text" asp-for="UserName" />
+    <span asp-validation-for="UserName" class="text-danger"></span>
+    <br />
+
+    <label asp-for="Password">Password :</label><br />
+    <input type="password" asp-for="Password" />
+    <span asp-validation-for="Password" class="text-danger"></span>
+    <br />
+
+    <input type="checkbox" asp-for="RememberMe" />
+    <label asp-for="RememberMe">Remember Me</label><br />
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
+<div>
+    @ViewBag.UserMessage
+</div>

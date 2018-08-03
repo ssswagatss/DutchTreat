@@ -1,4 +1,5 @@
 ﻿using DutchTreat.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,13 @@ using System.Threading.Tasks;
 
 namespace DutchTreat.Data
 {
-    public class DutchContext:DbContext
+    public class DutchContext:IdentityDbContext<StoreUser>
     {
         public DutchContext(DbContextOptions<DutchContext> options):base(options)
         {
-
+            
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
-
-
-
     }
 }
